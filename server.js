@@ -6,7 +6,7 @@ const createToken = (room, identity) => {
     const roomName = room;
     const participantName = identity;
 
-    const at = new AccessToken({
+    const at = new AccessToken(process.env.LK_API_KEY, process.env.LK_API_SECRET, {
         identity: participantName,
     });
     at.addGrant({ roomJoin: true, room: roomName });
@@ -27,8 +27,6 @@ app.get('/handshake', (req, res) => {
     }
 
     console.log(`creating token for ${identity} in room ${room}`);
-
-    console.log('using key', process.env.LK_API_KEY);
 
     const token = createToken(room, identity);
 
