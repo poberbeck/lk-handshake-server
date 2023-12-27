@@ -28,6 +28,8 @@ app.get('/handshake', (req, res) => {
 
     console.log(`creating token for ${identity} in room ${room}`);
 
+    console.log('using key', process.env.LK_API_KEY);
+
     const token = createToken(room, identity);
 
     res.send({ token });
