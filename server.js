@@ -6,7 +6,7 @@ const createToken = (room, identity) => {
     const roomName = room;
     const participantName = identity;
 
-    const at = new AccessToken('api-key', 'secret-key', {
+    const at = new AccessToken({
         identity: participantName,
     });
     at.addGrant({ roomJoin: true, room: roomName });
